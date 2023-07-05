@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SelfUnroll</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+rel="stylesheet">
+
+<link rel="stylesheet" href="./static/css/bulma.min.css">
+<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="./static/css/index.css">
+</head>
+
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Self-Supervised Scene Dynamic Recovery from Rolling Shutter Images and Events</h1>
+            
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                Yangguang Wang<sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://xiangz-0.github.io/">Xiang Zhang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href = "https://mingyuan-lin.github.io/"> Mingyuan Lin</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://dvs-whu.cn/">Lei Yu</a><sup>1</sup><sup>†</sup>,</span>
+              <span class="author-block">
+                <a href="http://camera.pku.edu.cn/">Boxin Shi</a><sup>2</sup>,</span>
+                <span class="author-block">
+                 <a href="http://www.captain-whu.com/yangwen.html"> Wen Yang </a><sup>1</sup>,</span>
+                <span class="author-block">
+                <a href="http://www.captain-whu.com/xia_En.html">Gui-Song Xia</a><sup>1</sup><sup>†</sup>,
+              </span>
+            </div>
+  
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Wuhan University,</span>
+              <span class="author-block"><sup>2</sup>Peking University</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>†</sup>Corresponding authors</span>
+              
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="./selfunroll.pdf"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="./selfunroll.pdf"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://github.com/w3un/SelfUnroll_event"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span> -->
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/w3un/selfunroll_code"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/w3un/SelfUnroll_event"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                    </a>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  
+
+
+
+    <section class="hero  is-small">
+      <div class="hero-body">
+        
+        
+          
+        <!-- </div> -->
+        <div class="container " style="width: 80%;"> 
+          <div id="results-carousel1" class="carousel results-carousel">
+            
+            <div class="item item-toby">
+              
+              <video poster="" id="Stone" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/190206_Tuebingen_000092.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-toby">
+              
+              <video poster="" id="Stone" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/190206_Tuebingen_000100.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <!-- <div class="item item-toby">
+              
+              <video poster="" id="Couryard" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/fast.mp4"
+                        type="video/mp4">
+              </video>
+            </div> -->
+            <div class="item item-toby">
+              
+              <video poster="" id="Couryard" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/190206_Tuebingen_000004.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-toby">
+              <video poster="" id="Couryard" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/190206_Tuebingen_000011.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-toby">
+              
+              <video poster="" id="Fountain" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/190206_Tuebingen_000017.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-toby">
+              
+              <video poster="" id="Stone" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/190206_Tuebingen_000018.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            
+            <div class="item item-steve">
+              
+              <video poster="" id="Horse" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/24209_1_33.mp4"
+                        type="video/mp4">
+              </video>
+              
+            </div>
+            <div class="item item-chair-tp">
+              <video poster="" id="Couryard" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/24209_1_36.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-shiba">
+              <video poster="" id="Couryard" autoplay controls muted loop playsinline height="100%">
+                <source src="./images/gsvideo/24209_1_31.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="container" style="width: 80%;">
+          <div class="columns is-centered has-text-centered">
+            
+            <!-- <div class="column is-3 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            <div class="column  text-is-centered">
+              <div class="content">
+                <h5 class="is-5">Event Frame</h5>
+              </div>
+            </div>
+            <!-- <div class="column is-1 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            <!-- <div class="column is-2 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            <!-- <div class="column is-1 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            <div class="column  text-is-centered">
+              <div class="content">
+                <h5 class="is-5">RS Video</h5>
+              </div>
+            </div>
+              <div class="column  text-is-centered">
+                <div class="content">
+                  <h5 class="is-5">Scene Dynamic Recovery <br> by SelfUnroll</h5>
+                </div>
+              </div>
+            <!-- </div>
+            <div class="column is-1 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            <!-- <div class="column is-1 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            <!-- <div class="column is-1 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            <!-- <div class="column is-2 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            
+            <!-- <div class="column is-2 text-is-centered">
+              <div class="content">
+              </div>
+            </div> -->
+            <!-- <div class="column text-is-centered">
+              <div class="content">
+                
+              </div>
+            </div> -->
+            
+          </div>
+        </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </section>
+    
+    <!-- <script>bulmaCarousel.attach('.carousel', {
+      minVisible: 3,
+      // other options...
+    });</script> -->
+
+      <!-- <temp> -->
+    <!-- Abstract -->
+
+    <br>
+    <section class="hero  is-small">
+      <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <br>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Scene Dynamic Recovery (SDR) by inverting distorted <a href="https://en.wikipedia.org/wiki/Rolling_shutter">Rolling shutter</a> (RS) images to an undistorted high frame-rate Global Shutter (GS) video is a severely ill-posed problem due to the missing temporal dynamic information in both RS intra-frame scanlines and inter-frame exposures, particularly when prior knowledge about camera/object motions is unavailable. Commonly used artificial assumptions on scenes/motions and data-specific characteristics are prone to producing sub-optimal solutions in real-world scenarios. To address this challenge, we propose an event-based SDR network within a self-supervised learning paradigm, i.e., SelfUnroll. We leverage the extremely high temporal resolution of event cameras to provide accurate inter/intra-frame dynamic information. Specifically, an Event-based Inter/intra-frame Compensator (E-IC) is proposed to predict the per-pixel dynamic between arbitrary time intervals, including the temporal transition and spatial translation. Exploring connections in terms of RS-RS, RS-GS, and GS-RS, we explicitly formulate mutual constraints with the proposed E-IC, resulting in supervisions without ground-truth GS images. Extensive evaluations over synthetic and real datasets demonstrate that the proposed method achieves state-of-the-art and shows remarkable performance for event-based RS2GS inversion in real-world scenarios.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </section>
+      <!-- <script>
+        const carousel = new bulmaCarousel('.carousel', {
+  slidesToShow: 2,
+  slidesToScroll: 2,
+});
+
+      </script> -->
+
+      <br>
+        <section class="hero  is-small">
+          <!-- Paper Pipeline. --><br>
+          <div class="columns is-centered has-text-centered">
+            
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Method</h2>
+              <div class="container" style="width: 80%;border: 2px solid gainsboro; padding: 5px;">
+                
+              <video id="sdf_tri"  controls muted loop playsinline width="100%">
+                <source src="./images/VIDEO.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+            </div>
+          </div>
+          
+          </div>
+          
+
+
+        </section>
+
+
+          
+   <br>
+   <section class="hero  is-small">
+    <div class="container is-max-desktop">
+      <br>
+      <div class="columns is-centered ">
+        <div class="column is-full-width">
+          <div class="content has-text-centered">
+          <h2 class="title is-3">More Results in Real-World Scenarios</h2>
+        </div>
+        <div class="content has-text-centered">
+          <h3 class="title is-5">Single GS Frame Reconstrction</h3>
+        </div>
+        </div>
+      </div>
+      
+      
+        
+      </div>
+      <div class="container is-max-desktop">
+        <div class="content has-text-justified">
+          <p>
+            To evaluate the effectiveness of different methods (<a href="https://github.com/GitCVfb/CVR">CVR</a>, <a href="https://github.com/zxyemo/EvUnroll">EvUnroll</a> and Ours) of RS correction, the upper portion of the image displays the reconstructed effect <b>when the mouse is hovered over it</b>, while the lower portion shows the original input RS image. This allows for a clearer comparison of the correction effect.
+          </p>
+        </div>
+      </div>
+    <br>
+      <div class="container" style="width: 60%;">
+    <div class="columns is-gapless is-centered" >
+     
+      <div class="column">
+        <div class="content has-text-centered">
+          <div class="canvas-wrapper">
+            <canvas id="1canvas0" class="gev"  ></canvas>
+          </div>
+          <div class="canvas-wrapper">
+          <canvas id="0canvas0" class="gev" ></canvas>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas id="2canvas0" class="gev"></canvas>
+        </div>
+        <div class="canvas-wrapper1">
+          <canvas id="3canvas0" class="gev" ></canvas>
+        </div>
+        </div>
+        
+      </div>
+      <div class="column">
+        <div class="content has-text-centered">
+          <div class="canvas-wrapper">
+          <canvas id="1canvas1" class="gev" ></canvas></div>
+          <div class="canvas-wrapper">
+          <canvas id="0canvas1" class="gev"></canvas></div>
+          <div class="canvas-wrapper">
+          <canvas id="2canvas1" class="gev"></canvas></div>
+          <div class="canvas-wrapper1">
+          <canvas id="3canvas1" class="gev"></canvas></div>
+        </div>
+        
+      </div>
+      <div class="column">
+        <div class="content has-text-centered">
+          <div class="canvas-wrapper">
+          <canvas id="1canvas2" class="gev"></canvas></div>
+          <div class="canvas-wrapper">
+          <canvas id="0canvas2" class="gev"></canvas></div>
+          <div class="canvas-wrapper">
+          <canvas id="2canvas2" class="gev"></canvas></div>
+          <div class="canvas-wrapper1">
+          <canvas id="3canvas2" class="gev" ></canvas></div>
+        </div>
+        
+      </div>
+      <div class="column">
+        <div class="content has-text-centered">
+          <div class="canvas-wrapper">
+          <canvas id="1canvas3" class="gev"  ></canvas></div>
+          <div class="canvas-wrapper">
+          <canvas id="0canvas3" class="gev"  ></canvas></div>
+          <div class="canvas-wrapper">
+          <canvas id="2canvas3" class="gev" ></canvas></div>
+          <div class="canvas-wrapper1">
+          <canvas id="3canvas3" class="gev" ></canvas></div>
+        </div>
+        
+      </div>
+      <div class="column">
+        <div class="content has-text-centered">
+          <div class="canvas-wrapper">
+          <canvas id="1canvas4" class="gev"></canvas></div>
+          <div class="canvas-wrapper">
+          <canvas id="0canvas4" class="gev" ></canvas></div>
+          <div class="canvas-wrapper">
+          <canvas id="2canvas4" class="gev"></canvas></div>
+          <div class="canvas-wrapper1">
+          <canvas id="3canvas4" class="gev"></canvas></div>
+        </div>
+        
+      </div>
+    </div>
+  
+  
+    <!-- <div class="container" style="width: 75%;"> -->
+                    
+                  
+      <div class="columns is-gapless is-centered has-text-centered">
+
+        <div class="column text-is-centered">
+          <div class="content">
+            <h5 class=" is-5">Event Frame</h5>
+          </div>
+        </div>
+        <div class="column text-is-centered">
+          <div class="content">
+            <h5 class=" is-5">RS Video</h5>
+          </div>
+        </div>
+        <div class="column text-is-centered">
+          <div class="content">
+            <h5 class=" is-5">CVR</h5>
+          </div>
+        </div>
+        <div class="column text-is-centered">
+          <div class="content">
+            <h5 class=" is-5">EvUnroll</h5>
+          </div>
+        </div>
+        <div class="column text-is-centered">
+          <div class="content">
+            <h5 class=" is-5">Ours</h5>
+          </div>
+        </div>
+      <!-- </div> -->
+
+    
+  
+
+
+    
+
+
+    </div>
+  </div>
+  
+  </section>
+   <br>
+   <section class="hero  is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered ">
+        <div class="column is-full-width">
+          <div class="content has-text-centered">
+            <h3 class="title is-5">Continuous-time GS Video Reconstrction</h3>
+        </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="content has-text-justified">
+        <p>
+          Our method can generate continuous-time GS video at arbitrary time from rolling shutter images and events. We compare Our SelfUnoll-M with <a href="https://github.com/GitCVfb/CVR">CVR</a> and <a href="https://github.com/zxyemo/EvUnroll">EvUnroll</a> on 10X (1st row), 50X (2nd row), 100X (3rd row) reconstructions (nX represents the reconstructions n GS frames from one RS frame).
+        </p>
+      </div>
+    </div>
+    <
+      <div class="container " style="width:75%;"> 
+          
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-steve">
+            <!-- <video poster="" id="Horse" autoplay controls muted loop playsinline height="100%">
+              <source src="./images/headvideo/24209_1_28.mp4"
+                      type="video/mp4">
+            </video> -->
+            <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+              <source src="./images/video1/20_1.mp4" type="video/mp4">
+          </video>
+          <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+            <source src="./images/video1/100_1.mp4" type="video/mp4">
+        </video>
+        <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+          <source src="./images/video1/200_1.mp4" type="video/mp4">
+      </video>
+            
+          </div>
+          <div class="item item-chair-tp">
+            <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+              <source src="./images/video5/output2.mp4" type="video/mp4">
+          </video>
+          <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+            <source src="./images/video5/output1.mp4" type="video/mp4">
+        </video>
+        <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+          <source src="./images/video5/output.mp4" type="video/mp4">
+      </video>
+          </div>
+          <div class="item item-shiba">
+            <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+              <source src="./images/video2/20_1.mp4" type="video/mp4">
+          </video>
+          <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+            <source src="./images/video2/100_1.mp4" type="video/mp4">
+        </video>
+        <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="" height="100%">
+          <source src="./images/video2/200_1.mp4" type="video/mp4">
+      </video>
+          </div>
+          
+        </div>
+      
+        <div class="container" style="width: 75%;">
+                  
+                
+                <div class="columns is-centered has-text-centered">
+        
+                  <div class="column text-is-centered">
+                    <div class="content">
+                      <h5 class=" is-5">Event Frame</h5>
+                    </div>
+                  </div>
+                  <div class="column text-is-centered">
+                    <div class="content">
+                      <h5 class=" is-5">RS Video</h5>
+                    </div>
+                  </div>
+                  <div class="column text-is-centered">
+                    <div class="content">
+                      <h5 class=" is-5">CVR</h5>
+                    </div>
+                  </div>
+                  <div class="column text-is-centered">
+                    <div class="content">
+                      <h5 class=" is-5">EvUnroll</h5>
+                    </div>
+                  </div>
+                  <div class="column text-is-centered">
+                    <div class="content">
+                      <h5 class=" is-5">Ours</h5>
+                    </div>
+                  </div>
+                </div>
+      
+              
+            
+          
+    
+
+
+
+        </div>
+      
+          
+      <!-- <br> -->
+      
+    </div>
+      <br>
+      
+        
+  
+</section>
+<br>
+<br>
+     
+
+
+
+    
+
+
+    
+  
+
+
+<script>
+    
+    // 获取所有画布元素
+    const canvases = Array.from(document.querySelectorAll('.gev'));
+
+canvases.sort(function(a, b) {
+  const idA = a.id.toLowerCase();
+  const idB = b.id.toLowerCase();
+  if (idA < idB) {
+    return -1;
+  }
+  if (idA > idB) {
+    return 1;
+  }
+  return 0;
+});
+    // 定义要加载的图片路径数组
+    const imagePaths = [[
+      './images/gev/2/05_001435_032300_00038-event_00.png',
+      './images/gev/2/rs.png',
+      './images/gev/2/cvr.png',
+      './images/gev/2/evunroll.png',
+      './images/gev/2/res.png',
+    ],
+    [
+          './images/dre/2/rs-2023_03_10_15_57_19_000068-event_00.png',
+          './images/dre/2/rs_.png',
+          './images/dre/2/cvr_.png',
+          './images/dre/2/evunroll_.png',
+          './images/dre/2/res_.png',
+        ],
+    [
+          './images/dre/5/event_6.png',
+          './images/dre/5/rs_.png',
+          './images/dre/5/cvr_.png',
+          './images/dre/5/evunroll_.png',
+          './images/dre/5/res_.png',
+        ],[
+      './images/gev/4/event_1.png',
+      './images/gev/4/rs_1.png',
+      './images/gev/4/cvr_1.png',
+      './images/gev/4/evunroll_1.png',
+      './images/gev/4/our_1.png',
+    ]];
+    // 遍历每个画布元素
+    canvases.forEach((canvas, index) => {
+      // 获取画布和绘图上下文
+// var canvas = document.getElementById("canvas");
+// 设置竖向分割线的样式
+    var ctx = canvas.getContext("2d");
+ctx.strokeStyle = 'green';  // 设置线条颜色为红色
+ctx.lineWidth = canvas.width/100;        // 设置线条粗细为 2 像素
+// ctx.globalAlpha = 1.0;    // 设置透明度为 50%
+// 创建Image对象并加载图片
+var image1 = new Image();
+var image2 = new Image();
+image1.src = imagePaths[Math.floor(index/5)][1];
+image2.src = imagePaths[Math.floor(index/5)][index%5];
+    // 在Canvas上绘制初始的图像
+    image2.onload = function() {
+        ctx.drawImage(image2, 0, 0, canvas.width, canvas.height);
+    };
+// 监听鼠标在画布上的移动事件
+canvas.addEventListener("mousemove",  e => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // 获取鼠标在画布上的位置
+  var rect = canvas.getBoundingClientRect();
+        var x = event.clientX - rect.left;
+        var y = event.clientY - rect.top;
+        x = x * canvas.width / rect.width;
+        y = y * canvas.height / rect.height;
+        // var rect = canvas.getBoundingClientRect();
+        // x -= rect.left;
+        // y -= rect.top;
+  // // 判断当前鼠标位置应该显示哪张图片的哪一部分
+   
+//   for (i = 0; i < 5; i++) {
+//     var tctx = canvases[5*Math.floor(index/5)+i].getContext("2d");
+//     tctx.strokeStyle = 'green';  // 设置线条颜色为红色
+//     tctx.lineWidth = canvas.width/100;  
+//     var image1 = new Image();
+//     var image2 = new Image();
+//     image1.src = imagePaths[Math.floor(index/5)][1];
+//     image2.src = imagePaths[Math.floor(index/5)][i];
+//     tctx.drawImage(image2, 0, 0, canvases[5*Math.floor(index/5)+i].width, y, 0, 0, canvases[5*Math.floor(index/5)+i].width, y);
+//     tctx.drawImage(image1, 0, y, canvases[5*Math.floor(index/5)+i].width, canvases[5*Math.floor(index/5)+i].height, 0, y, canvases[5*Math.floor(index/5)+i].width, canvases[5*Math.floor(index/5)+i].height);
+//           // 画竖向分割线
+//           tctx.beginPath();
+//           tctx.moveTo(0, y);
+//           tctx.lineTo(canvases[5*Math.floor(index/5)+i].width, y);
+//           tctx.stroke();
+// }
+// });
+
+  for (i = 0; i < 5; i++) {
+    var mergeContext = canvases[5*Math.floor(index/5)+i].getContext("2d");
+    // tctx.strokeStyle = 'green';  // 设置线条颜色为红色
+    // tctx.lineWidth = canvas.width/100;  
+    var image1 = new Image();
+    var image2 = new Image();
+    image1.src = imagePaths[Math.floor(index/5)][1];
+    image2.src = imagePaths[Math.floor(index/5)][i];
+    mergeContext.clearRect(0, 0, canvas.width, canvas.height);
+    mergeContext.drawImage(image2, 0, 0, image2.width, y/canvas.height*image2.height, 0, 0, canvases[5*Math.floor(index/5)+i].width, y);
+    mergeContext.drawImage(image1, 0, y/canvas.height*image1.height, image2.width, image1.height, 0, y, canvases[5*Math.floor(index/5)+i].width, canvases[5*Math.floor(index/5)+i].height);
+
+    var arrowLength = 0.07 * canvas.width*2;
+    var arrowheadWidth = 0.020 * canvas.width*2;
+    var arrowheadLength = 0.04 * canvas.width*2;
+    var arrowPosX = canvas.width / 6;
+    var arrowWidth = 0.007 * canvas.width*2;
+    var currY = y;
+    // Draw border
+    
+    mergeContext.beginPath();
+    mergeContext.moveTo(0, y);
+    mergeContext.lineTo(canvas.width, y);
+    mergeContext.closePath()
+    mergeContext.strokeStyle = "#ffff4d";
+    mergeContext.lineWidth = canvas.width/100;           
+    mergeContext.stroke();
+    // Draw arrow
+    mergeContext.beginPath();
+    mergeContext.moveTo(arrowPosX - arrowWidth/2, currY);
+    // // Move right until meeting arrow head
+    mergeContext.lineTo(arrowPosX - arrowWidth/2, currY-arrowLength/2+arrowheadLength/2);
+    
+    // // Draw right arrow head
+    mergeContext.lineTo(arrowPosX - arrowheadWidth/2, currY-arrowLength/2+arrowheadLength/2);
+    mergeContext.lineTo(arrowPosX, currY-arrowLength/2);
+    mergeContext.lineTo(arrowPosX + arrowheadWidth/2, currY-arrowLength/2+arrowheadLength/2);
+
+    // Go back to the left until meeting left arrow head
+    mergeContext.lineTo(arrowPosX + arrowWidth/2, currY-arrowLength/2+arrowheadLength/2);
+    
+    // // Draw left arrow head
+    mergeContext.lineTo(arrowPosX + arrowWidth/2, currY+arrowLength/2-arrowheadLength/2);
+    mergeContext.lineTo(arrowPosX + arrowheadWidth/2, currY+arrowLength/2-arrowheadLength/2);
+    mergeContext.lineTo(arrowPosX, currY+arrowLength/2);
+    mergeContext.lineTo(arrowPosX - arrowheadWidth/2, currY+arrowLength/2-arrowheadLength/2);
+    
+    mergeContext.lineTo(arrowPosX - arrowWidth/2, currY+arrowLength/2-arrowheadLength/2);
+    mergeContext.lineTo(arrowPosX - arrowWidth/2, currY);
+    // mergeContext.stroke();
+    mergeContext.closePath();
+    // mergeContext.stroke();
+    mergeContext.fillStyle = "#ffff4d";
+    mergeContext.fill();
+    
+//     画竖向分割线
+    
+// }
+  // });
+  
+  canvas.addEventListener('mouseout', e => {
+    for (i = 0; i < 5; i++) {
+      // var image1 = new Image();
+  var image2 = new Image();
+  // image1.src = dreimagePaths[Math.floor(index/5)][1];
+  image2.src = imagePaths[Math.floor(index/5)][i];
+      var tctx = canvases[5*Math.floor(index/5)+i].getContext("2d");
+      tctx.clearRect(0, 0, canvas.width, canvas.height);
+      tctx.drawImage(image2, 0, 0, canvas.width, canvas.height);
+    }
+  });
+}});
+    });
+  </script>
+<!-- </div> -->
+  <!-- </div> -->
+  <br>
+  <br>
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{wang2023self,
+        title={Self-Supervised Scene Dynamic Recovery from Rolling Shutter Images and Events},
+        author={Wang, Yangguang and Zhang, Xiang and Lin, Mingyuan and Yu, Lei and Shi, Boxin and Yang, Wen and Xia, Gui-Song},
+        journal={arXiv},
+        year={2023}
+      }
+      </code></pre>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link"
+           href="./static/videos/nerfies_paper.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website was modified from the <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>. Appreaciate for sharing this perfect template!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+  </body>
+</html>
+
