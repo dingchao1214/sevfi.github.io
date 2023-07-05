@@ -121,73 +121,43 @@ href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css
   </section>
 
 
-    <section class="hero  is-small">
-      <div class="hero-body">        
-    
-          
-        <!-- </div> -->
-        <div class="container " style="width: 80%;"> 
-          <div id="results-carousel1" class="carousel results-carousel">
-            
-            <div class="item item-toby">
-              
-              <video poster="" id="Stone" autoplay controls muted loop playsinline height="100%">
-                <source src="./videos/checkerboard/input.mp4"
-                        type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-toby">
-              
-              <video poster="" id="Stone" autoplay controls muted loop playsinline height="100%">
-                <source src="./videos/checkerboard/rife.mp4"
-                        type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-toby">
-              
-              <video poster="" id="Stone" autoplay controls muted loop playsinline height="100%">
-                <source src="./videos/checkerboard/timelens.mp4"
-                        type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-toby">
-              
-              <video poster="" id="Stone" autoplay controls muted loop playsinline height="100%">
-                <source src="./videos/checkerboard/ours.mp4"
-                        type="video/mp4">
-              </video>
-            </div>
-          </div>
-          <div class="container" style="width: 80%;">
-          <div class="columns is-centered has-text-centered">
-            
-            <div class="column  text-is-centered">
-              <div class="content">
-                <h5 class="is-5">Input</h5>
-              </div>
-            </div>
-            <div class="column  text-is-centered">
-              <div class="content">
-                <h5 class="is-5">RIFE</h5>
-              </div>
-            </div>
-              <div class="column  text-is-centered">
-                <div class="content">
-                  <h5 class="is-5">Time Lens</h5>
-                </div>
-              </div>
-            <div class="column  text-is-centered">
-                <div class="content">
-                  <h5 class="is-5">SEVFI-Net (Ours)</h5>
-                </div>
-              </div>
-          
-          </div>
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Visual Effects</h2>
+          <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./videos/checkerboard/input.mp4"
+                    type="video/mp4">
+          </video>
         </div>
-        </div>
-        <!-- </div> -->
       </div>
-    </section>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Matting</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./videos/checkerboard/input.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
     
     <!-- Abstract -->
 
